@@ -16,6 +16,7 @@ Replace the line above with an actual screenshot link or path if you have one.
 *   **Notifications:** Dunst
 *   **Keybindings:** Vim-like navigation (HJKL)
 *   **Aesthetics:** Rounded corners, blur effects, custom Waybar modules.
+*   **Screenshot:** Using grim and satty, window screenshot requires jq installed
 *   **Utilities:** Includes configurations for clipboard history (**Cliphist** via Wofi), brightness control (laptop & DDC/CI via **ddcutil**/**i2c-dev**), media controls, power menu, **lm_sensors** temperature monitoring, etc.
 
 ## Installation (Arch Linux)
@@ -46,7 +47,7 @@ These instructions assume you are running Arch Linux or an Arch-based distributi
 3.  **Install Dependencies:**
     Run the following command in your terminal to install all the necessary packages from the official Arch repositories.
     ```bash
-    sudo pacman -Syu --needed uwsm hyprland waybar hyprpaper hyprlock alacritty dolphin sddm wofi wl-clipboard cliphist brightnessctl wireplumber playerctl  dunst hyprpolkitagent hyprcursor ddcutil xdg-desktop-portal-hyprland xdg-desktop-portal-gtk kservice qt6-wayland lm_sensors pavucontrol power-profiles-daemon grim slurp 
+    sudo pacman -Syu --needed uwsm hyprland waybar hyprpaper hyprlock alacritty dolphin sddm wofi wl-clipboard cliphist brightnessctl wireplumber playerctl  dunst hyprpolkitagent hyprcursor ddcutil xdg-desktop-portal-hyprland xdg-desktop-portal-gtk kservice qt6-wayland lm_sensors pavucontrol power-profiles-daemon grim satty 
     ```
 
 4.  **Install Nerd Font:**
