@@ -1,4 +1,3 @@
-/* ~/.config/waybar/style.css */
 @define-color rosewater #f5e0dc;
 @define-color flamingo #f2cdcd;
 @define-color pink #f5c2e7;
@@ -64,7 +63,8 @@ window#waybar.hidden {
 #custom-mpris-prev,
 #custom-mpris-playpause,
 #custom-mpris-next,
-#wlr-taskbar {
+#wlr-taskbar,
+#custom-screenshot {
 background-color: @surface0;
 color: @subtext1;
 padding: 2px 12px;
@@ -87,7 +87,8 @@ transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 #custom-mpris-prev:hover,
 #custom-mpris-playpause:hover,
 #custom-mpris-next:hover,
-#wlr-taskbar:hover {
+#wlr-taskbar:hover,
+#custom-screenshot:hover {
 background-color: @surface1;
 color: @text;
 border: 1px solid @overlay1;
@@ -213,6 +214,7 @@ border: none;
 padding: 0;
 margin: 4px 0;
 }
+
 #wlr-taskbar button {
 background-color: @surface0;
 color: @overlay2;
@@ -236,28 +238,54 @@ border-color: @green;
 font-weight: bold;
 }
 
-#memory { color: @yellow; }
-#memory:hover { background-color: @yellow; color: @base; border-color: @peach; }
+#memory {
+color: @yellow;
+}
 
-#network { color: @blue; }
-#network:hover { background-color: @blue; color: @base; border-color: @sapphire; }
+#memory:hover {
+background-color: @yellow;
+color: @base;
+border-color: @peach;
+}
+
+#network {
+color: @blue;
+}
+
+#network:hover {
+background-color: @blue;
+color: @base;
+border-color: @sapphire;
+}
+
 #network.disconnected {
 color: @red;
 background-color: @surface1;
 border: 1px solid @red;
 }
 
-#battery { color: @green; }
-#battery:hover { background-color: @green; color: @base; border-color: @teal; }
-#battery.charging, #battery.plugged {
+#battery {
+color: @green;
+}
+
+#battery:hover {
+background-color: @green;
+color: @base;
+border-color: @teal;
+}
+
+#battery.charging,
+#battery.plugged {
 color: @teal;
 animation: pulse-charge 2s infinite ease-in-out;
 }
+
 #battery.warning {
 color: @yellow;
 background-color: alpha(@yellow, 0.3);
 border: 1px solid @yellow;
 }
+
 #battery.critical {
 color: @bright_red;
 background-color: alpha(@red, 0.4);
@@ -270,18 +298,23 @@ animation: blink 0.8s infinite alternate;
 #custom-mpris-next {
 color: @teal;
 }
-#custom-mpris-playpause { color: @green; }
+
+#custom-mpris-playpause {
+color: @green;
+}
 
 #custom-mpris-prev:hover {
 background-color: @teal;
 color: @base;
 border-color: @green;
 }
+
 #custom-mpris-playpause:hover {
 background-color: @green;
 color: @base;
 border-color: @teal;
 }
+
 #custom-mpris-next:hover {
 background-color: @teal;
 color: @base;
@@ -291,8 +324,16 @@ border-color: @green;
 #tray {
 padding: 2px 8px;
 }
-#tray > .passive { -gtk-icon-effect: dim; opacity: 0.7; }
-#tray > .active { opacity: 1.0; }
+
+#tray > .passive {
+-gtk-icon-effect: dim;
+opacity: 0.7;
+}
+
+#tray > .active {
+opacity: 1.0;
+}
+
 #tray > .needs-attention {
 -gtk-icon-effect: none;
 background-color: @yellow;
@@ -303,50 +344,87 @@ margin: 0 2px;
 animation: pulse-attention 1.5s infinite ease-out;
 }
 
-#power-profiles-daemon { color: @text; }
-#power-profiles-daemon.power-saver { color: @green; }
-#power-profiles-daemon.balanced { color: @blue; }
-#power-profiles-daemon.performance { color: @red; }
+#power-profiles-daemon {
+color: @text;
+}
+
+#power-profiles-daemon.power-saver {
+color: @green;
+}
+
+#power-profiles-daemon.balanced {
+color: @blue;
+}
+
+#power-profiles-daemon.performance {
+color: @red;
+}
+
 #power-profiles-daemon:hover {
 background-color: @lavender;
 color: @base;
 border-color: @mauve;
 }
 
-#custom-ddcbrightness, #backlight { color: @sky; }
-#custom-ddcbrightness:hover, #backlight:hover {
+#custom-ddcbrightness,
+#backlight {
+color: @sky;
+}
+
+#custom-ddcbrightness:hover,
+#backlight:hover {
 background-color: @sky;
 color: @base;
 border-color: @sapphire;
 }
 
-#pulseaudio { color: @pink; }
+#pulseaudio {
+color: @pink;
+}
+
 #pulseaudio:hover {
 background-color: @pink;
 color: @base;
 border-color: @mauve;
 }
+
 #pulseaudio.muted {
 color: @overlay1;
 background-color: @surface1;
 border: 1px solid @overlay1;
 }
 
-#custom-pomo { color: @flamingo; font-weight: bold; }
+#custom-pomo {
+color: @flamingo;
+font-weight: bold;
+}
+
 #custom-pomo.paused {
 color: @yellow;
 background-color: alpha(@yellow, 0.2);
 border-color: @yellow;
 }
+
 #custom-pomo.break {
 color: @green;
 background-color: alpha(@green, 0.2);
 border-color: @green;
 }
+
 #custom-pomo:hover {
 background-color: @flamingo;
 color: @base;
 border-color: @rosewater;
+}
+
+#custom-screenshot {
+color: @sky;
+}
+
+#custom-screenshot:hover {
+background-color: @sky;
+color: @base;
+border-color: @sapphire;
 }
 
 #clock {
@@ -354,6 +432,7 @@ color: @lavender;
 font-weight: bold;
 background-image: linear-gradient(to right, @surface0, @surface1);
 }
+
 #clock:hover {
 background-image: linear-gradient(to right, @lavender, @mauve);
 color: @base;
@@ -366,6 +445,7 @@ color: @red;
 margin-right: 8px;
 font-size: 16px;
 }
+
 #custom-power:hover {
 background-color: @red;
 color: @base;
@@ -387,24 +467,53 @@ tooltip label {
 }
 
 @keyframes blink {
-    to { background-color: alpha(@red, 0.4); color: @bright_red; border-color: @bright_red; }
-    from { background-color: @red; color: @base; border-color: @red; }
+    to {
+        background-color: alpha(@red, 0.4);
+        color: @bright_red;
+        border-color: @bright_red;
+    }
+    from {
+        background-color: @red;
+        color: @base;
+        border-color: @red;
+    }
 }
 
 @keyframes pulse-urgent {
-    0% { box-shadow: 0 0 3px alpha(@red, 0.5); opacity: 0.9; }
-    50% { box-shadow: 0 0 8px alpha(@red, 0.8); opacity: 1.0; }
-    100% { box-shadow: 0 0 3px alpha(@red, 0.5); opacity: 0.9; }
+    0% {
+        box-shadow: 0 0 3px alpha(@red, 0.5);
+        opacity: 0.9;
+    }
+    50% {
+        box-shadow: 0 0 8px alpha(@red, 0.8);
+        opacity: 1.0;
+    }
+    100% {
+        box-shadow: 0 0 3px alpha(@red, 0.5);
+        opacity: 0.9;
+    }
 }
 
 @keyframes pulse-charge {
-    0% { color: @teal; }
-    50% { color: @green; }
-    100% { color: @teal; }
+    0% {
+        color: @teal;
+    }
+    50% {
+        color: @green;
+    }
+    100% {
+        color: @teal;
+    }
 }
 
 @keyframes pulse-attention {
-    0% { box-shadow: 0 0 2px @yellow; }
-    50% { box-shadow: 0 0 6px @yellow; }
-    100% { box-shadow: 0 0 2px @yellow; }
+    0% {
+        box-shadow: 0 0 2px @yellow;
+    }
+    50% {
+        box-shadow: 0 0 6px @yellow;
+    }
+    100% {
+        box-shadow: 0 0 2px @yellow;
+    }
 }

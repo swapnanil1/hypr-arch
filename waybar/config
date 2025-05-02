@@ -24,6 +24,7 @@
         "backlight",
         "pulseaudio",
         "custom/pomo",
+        "custom/screenshot",
         "clock",
         "custom/power"
     ],
@@ -193,6 +194,13 @@
             "balanced": "",
             "power-saver": ""
         }
+    },
+    "custom/screenshot": {
+        "format": "󰄀",
+        "tooltip": true,
+        "tooltip-format": "Screenshot Tool\nLeft-Click: Full Screen\nRight-Click: Active Window",
+        "on-click": "grim -t ppm - | satty --filename - --output-filename \"$HOME/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H%M%S')-full.png\"",
+        "on-click-right": "~/.config/waybar/scripts/screenshot_active.sh"
     },
     "custom/power": {
         "format": " ",
