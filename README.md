@@ -2,9 +2,7 @@
 
 These are my personal configuration files for a Hyprland desktop environment setup on **Arch Linux**. The configuration aims for a clean look with blur effects and a keyboard-driven workflow, utilizing Waybar, Wofi, and Alacritty.
 
-**(Optional: Add a Screenshot Here)**
-<!-- ![Screenshot](path/to/your/screenshot.png) -->
-Replace the line above with an actual screenshot link or path if you have one.
+![Screenshot](preview.png)
 
 ## Features
 
