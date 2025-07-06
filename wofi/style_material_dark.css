@@ -1,0 +1,117 @@
+/* ~/.config/wofi/style.css */
+/* Wofi styling - Material Inspired Dark */
+
+/* --- Color Palette (Copied from Waybar theme) --- */
+@define-color md_dark_bg_main      #121212;
+@define-color md_dark_bg_surface   #1E1E1E;
+@define-color md_dark_bg_hover     #2C2C2C;
+@define-color md_dark_text_primary #E0E0E0;
+@define-color md_dark_text_secondary #B0B0B0;
+@define-color md_dark_divider      #383838;
+
+@define-color md_blue_accent  #64B5F6;
+@define-color md_teal_accent  #4DB6AC;
+@define-color md_green_accent #81C784;
+@define-color md_yellow_accent #FFF176;
+@define-color md_red_accent   #E57373;
+@define-color md_purple_accent #9575CD;
+@define-color md_orange_accent #FFB74D;
+
+/* Use shorter aliases for easier reference */
+@define-color base @md_dark_bg_main;
+@define-color surface @md_dark_bg_surface;
+@define-color hover @md_dark_bg_hover;
+@define-color text @md_dark_text_primary;
+@define-color subtext @md_dark_text_secondary;
+@define-color divider @md_dark_divider;
+@define-color accent @md_blue_accent; /* Primary accent */
+
+/* --- General Window Styling --- */
+window {
+    background-color: @base;
+    border: 1px solid @divider;
+    border-radius: 8px; /* Rounded corners */
+    font-family: "JetBrainsMono Nerd Font", sans-serif; /* Match Waybar font */
+    font-size: 14px; /* Slightly larger for readability in launcher */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4); /* Material elevation shadow */
+}
+
+/* --- Input Field --- */
+#input {
+    background-color: @surface;
+    color: @text;
+    padding: 10px 12px;
+    margin: 10px; /* Margin inside the window */
+    border: 1px solid @divider;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2); /* Inner shadow */
+}
+
+#input image {
+    /* Style the search icon if wofi provides one */
+    color: @subtext;
+}
+
+/* --- Results Area --- */
+#inner-box {
+    /* Container for entries */
+    margin: 0 10px 10px 10px; /* Match input margin */
+    background-color: transparent; /* Inherit window background */
+}
+
+#outer-box {
+    /* Usually just holds inner-box, no specific style needed often */
+}
+
+#scroll {
+    /* Scrolling container */
+    background-color: transparent;
+}
+
+/* --- Individual Result Entries --- */
+#entry {
+    padding: 8px 12px;
+    color: @subtext; /* Default entry text is less emphasized */
+    background-color: transparent;
+    border-radius: 6px;
+    border: none;
+    transition: background-color 0.15s ease-out, color 0.15s ease-out; /* Smooth selection */
+}
+
+#entry:selected {
+    background-color: @accent; /* Use primary accent for selection */
+    color: @base; /* Dark text on accent background */
+    font-weight: bold;
+}
+
+#entry:selected image {
+    /* Optionally change icon color on selection, though often not needed */
+}
+
+#text {
+    /* Text within the entry */
+    margin: 0 10px; /* Spacing between icon and text */
+}
+
+#text:selected {
+   /* Usually inherits color from #entry:selected */
+}
+
+image {
+    /* Application icons */
+    margin-right: 8px;
+    size: 32px; /* Match config if possible, fallback */
+}
+
+/* --- Scrollbar (Optional Styling) --- */
+/* Wofi scrollbar styling can be limited */
+/* #scroll trough { */
+/*     background-color: @surface; */
+/*     border-radius: 3px; */
+/*     border: 1px solid @divider; */
+/* } */
+/* #scroll slider { */
+/*     background-color: @accent; */
+/*     border-radius: 3px; */
+/*     border: 1px solid @base; */
+/* } */
