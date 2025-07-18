@@ -1,0 +1,435 @@
+/* Material-Inspired Dark Theme Palette */
+@define-color md_dark_bg_main      #121212; /* Very dark main background */
+@define-color md_dark_bg_surface   #1E1E1E; /* Darker gray for module "cards" */
+@define-color md_dark_bg_hover     #2C2C2C; /* Subtle hover for dark surfaces */
+@define-color md_dark_text_primary #E0E0E0; /* Light primary text */
+@define-color md_dark_text_secondary #B0B0B0; /* Lighter secondary text (still light) */
+@define-color md_dark_divider      #383838; /* Subtle dark borders/dividers */
+
+/* Accent colors remain largely the same, but ensure they have good contrast on dark */
+@define-color md_blue_accent  #64B5F6; /* (Material Blue 300) */
+@define-color md_teal_accent  #4DB6AC; /* (Material Teal 300) */
+@define-color md_green_accent #81C784; /* (Material Green 300) */
+@define-color md_yellow_accent #FFF176; /* (Material Yellow 300) */
+@define-color md_red_accent   #E57373; /* (Material Red 300) */
+@define-color md_purple_accent #9575CD; /* (Material Deep Purple 300) */
+@define-color md_orange_accent #FFB74D; /* (Material Orange 300) */
+
+
+/* Mapped Catppuccin names to Material Dark (for structure compatibility) */
+@define-color base @md_dark_bg_main;
+@define-color mantle @md_dark_bg_surface;
+@define-color crust @md_dark_bg_surface;
+
+@define-color surface0 @md_dark_bg_surface;
+@define-color surface1 @md_dark_bg_hover;
+@define-color surface2 @md_dark_bg_main;
+
+@define-color text @md_dark_text_primary;
+@define-color subtext1 @md_dark_text_secondary;
+@define-color subtext0 @md_dark_divider;
+
+@define-color overlay2 @md_dark_divider;
+@define-color overlay1 @md_dark_text_secondary;
+@define-color overlay0 @md_dark_text_primary;
+
+@define-color rosewater @md_dark_text_primary;
+@define-color flamingo @md_red_accent;
+@define-color pink @md_purple_accent;
+@define-color mauve @md_purple_accent;
+@define-color red @md_red_accent;
+@define-color maroon @md_red_accent;
+@define-color peach @md_orange_accent;
+@define-color yellow @md_yellow_accent;
+@define-color green @md_green_accent;
+@define-color teal @md_teal_accent;
+@define-color sky @md_blue_accent;
+@define-color sapphire @md_blue_accent;
+@define-color blue @md_blue_accent;
+@define-color lavender @md_purple_accent;
+
+@define-color bright_yellow @md_yellow_accent;
+@define-color bright_red @md_red_accent;
+@define-color bright_green @md_green_accent;
+
+
+/* --- Rest of your CSS structure, now using Material Dark colors & styling --- */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome, sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    min-height: 0;
+    transition: all 0.2s ease-out;
+    box-shadow: none;
+}
+
+window#waybar {
+    background-color: @base;
+    color: @text;
+    border-bottom: 1px solid @md_dark_divider;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces,
+#clock,
+#battery,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#backlight,
+#custom-pomo,
+#custom-power,
+#custom-ddcbrightness,
+#power-profiles-daemon,
+#custom-mpris-prev,
+#custom-mpris-playpause,
+#custom-mpris-next,
+#wlr-taskbar,
+#custom-screenshot,
+#cpu,
+#custom-cputemp,
+#custom-gputemp {
+    background-color: @surface0;
+    color: @subtext1;
+    padding: 3px 12px;
+    margin: 5px 4px;
+    border-radius: 8px;
+    border: 1px solid @md_dark_divider;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+#clock:hover,
+#battery:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#custom-pomo:hover,
+#custom-power:hover,
+#custom-ddcbrightness:hover,
+#power-profiles-daemon:hover,
+#custom-mpris-prev:hover,
+#custom-mpris-playpause:hover,
+#custom-mpris-next:hover,
+#wlr-taskbar button:hover,
+#custom-screenshot:hover,
+#cpu:hover,
+#custom-cputemp:hover,
+#custom-gputemp:hover {
+    background-color: @surface1;
+    color: @text;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+}
+
+#cpu, #custom-cputemp, #custom-gputemp {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+#cpu {
+    color: @peach;
+    padding-left: 12px;
+    padding-right: 6px;
+    margin-left: 4px; margin-right: 0;
+    border-top-left-radius: 8px; border-bottom-left-radius: 8px;
+    border-top-right-radius: 0; border-bottom-right-radius: 0;
+    border-right: none;
+}
+#custom-cputemp {
+    color: @maroon;
+    padding-left: 6px; padding-right: 6px;
+    margin-left: 0; margin-right: 0;
+    border-radius: 0;
+    border-left: none; border-right: none;
+}
+#custom-gputemp {
+    color: @red;
+    padding-left: 6px; padding-right: 12px;
+    margin-left: 0; margin-right: 4px;
+    border-top-right-radius: 8px; border-bottom-right-radius: 8px;
+    border-top-left-radius: 0; border-bottom-left-radius: 0;
+    border-left: none;
+}
+
+#workspaces {
+    background-color: transparent;
+    padding: 0 0px;
+    margin: 5px 6px 5px 0;
+    box-shadow: none;
+    border: none;
+}
+
+#workspaces button {
+    padding: 3px 10px;
+    margin: 0 2px;
+    border-radius: 6px;
+    color: @subtext1;
+    background-color: @surface0;
+    border: 1px solid @md_dark_divider;
+}
+
+#workspaces button:hover {
+    background-color: @surface1;
+    color: @blue;
+    border: 1px solid @blue;
+}
+
+#workspaces button.focused {
+    background-color: @blue;
+    color: @md_dark_bg_main;
+    border: 1px solid @blue;
+    font-weight: bold;
+    box-shadow: 0 1px 3px alpha(@blue, 0.3);
+}
+
+#workspaces button.persistent {
+    color: @blue;
+    font-style: normal;
+    border-color: @blue;
+    background-color: alpha(@blue, 0.15);
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    color: @md_dark_bg_main;
+    font-weight: bold;
+    border-color: @red;
+    animation: pulse-urgent 0.8s infinite ease-in-out alternate;
+}
+
+#workspaces button.empty {
+    color: @subtext0;
+    background-color: @base;
+    border-color: @md_dark_divider;
+    box-shadow: none;
+}
+
+#wlr-taskbar {
+    background: transparent;
+    padding: 0;
+    margin: 5px 0;
+    box-shadow: none;
+    border: none;
+}
+
+#wlr-taskbar button {
+    background-color: @surface0;
+    color: @subtext1;
+    padding: 3px 10px;
+    margin: 0 3px;
+    border-radius: 6px;
+    border: 1px solid @md_dark_divider;
+}
+
+#wlr-taskbar button:hover {
+    background-color: @surface1;
+    color: @teal;
+    border-color: @teal;
+}
+
+#wlr-taskbar button.active {
+    background-color: @teal;
+    color: @md_dark_bg_main;
+    border-color: @teal;
+    font-weight: bold;
+}
+
+#memory {
+    color: @yellow;
+}
+#memory:hover {
+    background-color: @yellow;
+    color: @md_dark_bg_main;
+}
+
+#network {
+    color: @blue;
+}
+#network:hover {
+    background-color: @blue;
+    color: @md_dark_bg_main;
+}
+#network.disconnected {
+    color: @red;
+    background-color: alpha(@red, 0.2);
+    border: 1px solid @red;
+}
+
+#battery {
+    color: @green;
+}
+#battery:hover {
+    background-color: @green;
+    color: @md_dark_bg_main;
+}
+#battery.charging,
+#battery.plugged {
+    color: @teal;
+}
+#battery.warning {
+    color: @md_dark_bg_main;
+    background-color: @yellow;
+}
+#battery.critical {
+    color: @md_dark_bg_main;
+    background-color: @red;
+    animation: blink 0.8s infinite alternate;
+}
+
+#custom-mpris-prev,
+#custom-mpris-playpause,
+#custom-mpris-next {
+    color: @teal;
+}
+#custom-mpris-playpause {
+    color: @green;
+}
+
+#tray {
+    padding: 3px 8px;
+}
+#tray > .passive {
+    opacity: 0.6;
+}
+#tray > .active {
+    opacity: 1.0;
+}
+#tray > .needs-attention {
+    background-color: @yellow;
+    color: @md_dark_bg_main;
+    padding: 0 4px;
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+#power-profiles-daemon {
+    color: @text;
+}
+#power-profiles-daemon.power-saver {
+    color: @green;
+}
+#power-profiles-daemon.balanced {
+    color: @blue;
+}
+#power-profiles-daemon.performance {
+    color: @red;
+}
+
+#custom-ddcbrightness,
+#backlight {
+    color: @sky;
+}
+
+#pulseaudio {
+    color: @pink;
+}
+#pulseaudio.muted {
+    color: @subtext1;
+    background-color: @surface0;
+    border: 1px solid @md_dark_divider;
+}
+
+#custom-pomo {
+    color: @flamingo;
+    font-weight: bold;
+}
+#custom-pomo.paused {
+    color: @md_dark_text_secondary;
+    background-color: @md_dark_bg_hover;
+    border-color: @md_dark_divider;
+}
+#custom-pomo.break {
+    color: @green;
+    background-color: alpha(@green, 0.15);
+    border-color: @green;
+}
+
+#custom-screenshot {
+    color: @sky;
+}
+
+#clock {
+    color: @lavender;
+    font-weight: bold;
+}
+#clock:hover {
+    background-color: @lavender;
+    color: @md_dark_bg_main;
+}
+
+#custom-power {
+    color: @red;
+    margin-right: 8px;
+    font-size: 16px;
+}
+#custom-power:hover {
+    background-color: @red;
+    color: @md_dark_bg_main;
+}
+
+tooltip {
+    background-color: @md_dark_bg_surface;
+    color: @md_dark_text_primary;
+    border-radius: 6px;
+    border: 1px solid @md_dark_divider;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+tooltip label {
+    color: @md_dark_text_primary;
+}
+
+@keyframes blink {
+    to {
+        background-color: @red;
+        color: @md_dark_bg_main;
+    }
+    from {
+        background-color: alpha(@red, 0.7);
+        color: @md_dark_bg_main;
+    }
+}
+
+@keyframes pulse-urgent {
+    0% {
+        box-shadow: 0 0 3px alpha(@red, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 8px alpha(@red, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 3px alpha(@red, 0.4);
+    }
+}
+
+@keyframes pulse-charge {
+    0% {
+        color: @teal; /* This is @md_teal_accent */
+    }
+    50% {
+        color: @md_dark_text_primary; /* FIXED - Use main text for a bright pulse */
+    }
+    100% {
+        color: @teal; /* This is @md_teal_accent */
+    }
+}
+
+@keyframes pulse-attention {
+    0% {
+        box-shadow: 0 0 2px @yellow;
+    }
+    50% {
+        box-shadow: 0 0 6px @yellow;
+    }
+    100% {
+        box-shadow: 0 0 2px @yellow;
+    }
+}

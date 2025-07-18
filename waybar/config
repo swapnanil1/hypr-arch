@@ -3,6 +3,7 @@
     "position": "top",
     "height": 36,
     "modules-left": [
+        "wlr/taskbar",
         "cpu",
         "custom/cputemp",
         "custom/gputemp",
@@ -11,21 +12,20 @@
         "battery"
     ],
     "modules-center": [
+        "clock",
+        "sway/workspaces",
+        "custom/pomo"
+    ],
+    "modules-right": [
         "custom/mpris-prev",
         "custom/mpris-playpause",
         "custom/mpris-next",
-        "hyprland/workspaces",
-        "wlr/taskbar"
-    ],
-    "modules-right": [
-        "tray",
-        "power-profiles-daemon",
-        "custom/ddcbrightness",
-        "backlight",
         "pulseaudio",
-        "custom/pomo",
+        "backlight",
+        "custom/ddcbrightness",
+        "power-profiles-daemon",
         "custom/screenshot",
-        "clock",
+        "tray",
         "custom/power"
     ],
     "hyprland/workspaces": {
@@ -34,9 +34,9 @@
         "warp-on-scroll": false,
         "format": "{icon}",
         "format-icons": {
-            "1": " ",
-            "2": " ",
-            "3": " ",
+            "1": " ",
+            "2": " ",
+            "3": " ",
             "4": " ",
             "5": " ",
             "6": " ",
@@ -59,8 +59,8 @@
     },
     "clock": {
         "timezone": "Asia/Kolkata",
-        "format": "{:%I:%M %p}",
-        "format-alt": "{:%A, %B %d, %Y (%R)} ",
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%A, %B %d, %Y (%R)} ",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
@@ -91,7 +91,7 @@
         "format-icons": ["󰍛 "]
     },
     "memory": {
-        "format": "󰾆 {used:0.1f}G/{total:0.1f}G",
+        "format": "󰾆 {used:0.1f}G/{total:0.1f}G",
         "interval": 2
     },
     "battery": {
@@ -104,29 +104,27 @@
         "format-charging": "󰂄 {capacity}%",
         "format-plugged": "󰂄 {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-good": "",
-        "format-full": "",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "network": {
-        "format-wifi": "󰖩 {signalStrength}%   {bandwidthUpBits}   {bandwidthDownBits}",
-        "format-ethernet": "󰈀  {bandwidthUpBits}   {bandwidthDownBits}",
-        "tooltip-format": "{ifname} via {gwaddr} | {ipaddr}/{cidr}",
-        "format-linked": "{ifname} (No IP) 󰈀",
+        "format-wifi": "󰖩 {signalStrength}%  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-ethernet": "󰈀  {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format": "{ifname} via {gwaddr} | {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP) 󰈀",
         "format-disconnected": "󰖪 Disconnected",
-        "format-alt": "󰈀 {ifname} ->  {gwaddr}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-        "tooltip-format-ethernet": "{ifname} \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "format-alt": "󰈀 {ifname} ->  {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": "{ifname} \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
         "tooltip-format-disconnected": "Disconnected",
         "interval": 2
     },
     "pulseaudio": {
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰖁  {format_source}",
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰖁  {format_source}",
         "format-muted": "󰖁 {format_source}",
         "format-source": "󰍬 {volume}%",
-        "format-source-muted": "󰍭 ",
+        "format-source-muted": "󰍭 ",
         "format-icons": {
             "headphone": "󰋋",
             "hands-free": "󰋎",
@@ -149,7 +147,7 @@
     "custom/gputemp": {
         "format": "{icon} {text}°C",
         "return-type": "json",
-        "format-icons": ["󰘚 "],
+        "format-icons": ["󰘚 "],
         "interval": 5,
         "exec": "~/.config/waybar/scripts/get_temps.sh gpu",
         "tooltip": true
@@ -186,7 +184,7 @@
     },
     "power-profiles-daemon": {
         "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
         "tooltip": true,
         "format-icons": {
             "default": "",
@@ -198,14 +196,14 @@
     "custom/screenshot": {
         "format": "󰄀",
         "tooltip": true,
-        "tooltip-format": "Screenshot Tool\nLeft-Click: Full Screen\nRight-Click: Active Window",
+        "tooltip-format": "Screenshot Tool\nLeft-Click: Full Screen\nRight-Click: Active Window",
         "on-click": "grim -t ppm - | satty --filename - --output-filename \"$HOME/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H%M%S')-full.png\"",
         "on-click-right": "~/.config/waybar/scripts/screenshot_active.sh"
     },
     "custom/power": {
         "format": " ",
         "tooltip": true,
-        "tooltip-format": "Power Menu",
+        "tooltip-format": "Power Menu",
         "menu": "on-click",
         "menu-file": "~/.config/waybar/power_menu.xml",
         "menu-actions": {
