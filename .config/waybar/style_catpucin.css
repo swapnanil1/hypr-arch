@@ -1,0 +1,356 @@
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color pink #f5c2e7;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color maroon #eba0ac;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color subtext1 #bac2de;
+@define-color subtext0 #a6adc8;
+@define-color overlay2 #9399b2;
+@define-color overlay1 #7f849c;
+@define-color overlay0 #6c7086;
+@define-color surface2 #585b70;
+@define-color surface1 #45475a;
+@define-color surface0 #313244;
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
+@define-color bright_yellow #ffeeaa;
+@define-color bright_red #ff79a0;
+@define-color bright_green #b1fabb;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Free", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: alpha(@base, 0.95);
+    color: @text;
+    border-bottom: 2px solid @surface0;
+    transition: background 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Module base styles */
+label.module, box.module {
+    background: @surface0;
+    color: @subtext1;
+    padding: 2px 12px;
+    margin: 4px 4px;
+    border-radius: 18px;
+    transition: background 0.3s, color 0.3s;
+}
+
+label.module:hover, box.module:hover {
+    background: @surface1;
+    color: @text;
+    border: 1px solid @overlay1;
+}
+
+/* CPU / Temp modules */
+#cpu, #custom-cputemp, #custom-gputemp {
+background: @surface0;
+color: @subtext1;
+margin: 4px 0;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#cpu {
+color: @peach;
+padding: 2px 6px 2px 12px;
+border-radius: 18px 0 0 18px;
+}
+
+#custom-cputemp {
+color: @maroon;
+padding: 2px 6px;
+}
+
+#custom-gputemp {
+color: @red;
+padding: 2px 12px 2px 6px;
+border-radius: 0 18px 18px 0;
+}
+
+#cpu:hover {
+background: @peach;
+color: @base;
+border: 1px solid @flamingo;
+}
+
+#custom-cputemp:hover {
+background: @maroon;
+color: @base;
+border: 1px solid @red;
+}
+
+#custom-gputemp:hover {
+background: @red;
+color: @base;
+border: 1px solid @maroon;
+}
+
+/* Workspaces */
+#workspaces {
+background: transparent;
+padding: 0;
+margin: 4px 6px 4px 0;
+}
+
+#workspaces button {
+padding: 2px 8px;
+margin: 0 2px;
+border-radius: 14px;
+background: @surface0;
+color: @overlay1;
+opacity: 0.8;
+border: 1px solid @surface1;
+transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+#workspaces button:hover {
+background: @surface2;
+color: @sky;
+opacity: 1.0;
+box-shadow: 0 0 3px @sky;
+}
+
+#workspaces button.active {
+background: linear-gradient(to right, @blue, @mauve);
+color: @crust;
+border: 1px solid @mauve;
+font-weight: bold;
+box-shadow: 0 0 5px @blue;
+}
+
+#workspaces button.persistent {
+color: @mauve;
+font-style: italic;
+border-color: @mauve;
+opacity: 0.9;
+}
+
+#workspaces button.urgent {
+background: linear-gradient(to right, @red, @peach);
+color: @base;
+border: 1px solid @peach;
+opacity: 1.0;
+}
+
+#workspaces button.empty {
+background: @surface0;
+color: @overlay0;
+border-color: @surface0;
+opacity: 0.6;
+}
+
+/* Taskbar (wlr) buttons */
+#wlr-taskbar {
+background: transparent;
+padding: 0;
+margin: 4px 0;
+}
+
+#wlr-taskbar button {
+background: @surface0;
+color: @overlay2;
+padding: 2px 8px;
+margin: 0 3px;
+border-radius: 14px;
+border: 1px solid @surface1;
+transition: background 0.3s, color 0.3s;
+}
+
+#wlr-taskbar button:hover {
+background: @surface1;
+color: @teal;
+border: 1px solid @teal;
+}
+
+#wlr-taskbar button.active {
+background: linear-gradient(to right, @green, @teal);
+color: @base;
+border: 1px solid @green;
+font-weight: bold;
+}
+
+/* Memory, Network, Battery */
+#memory {
+color: @yellow;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+#memory:hover {
+background: @yellow;
+color: @base;
+border: 1px solid @peach;
+}
+
+#network {
+color: @blue;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+#network:hover {
+background: @blue;
+color: @base;
+border: 1px solid @sapphire;
+}
+#network.disconnected {
+background: @surface1;
+color: @red;
+border: 1px solid @red;
+}
+
+#battery {
+color: @green;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+#battery:hover {
+background: @green;
+color: @base;
+border: 1px solid @teal;
+}
+#battery.charging, #battery.plugged {
+/* No animation — static color */
+color: @teal;
+}
+#battery.warning {
+background: alpha(@yellow, 0.3);
+border: 1px solid @yellow;
+}
+#battery.critical {
+background: alpha(@red, 0.4);
+color: @bright_red;
+border: 1px solid @bright_red;
+}
+
+/* MPRIS controls */
+#custom-mpris-prev, #custom-mpris-next {
+color: @teal;
+}
+#custom-mpris-playpause {
+color: @green;
+}
+#custom-mpris-prev:hover, #custom-mpris-next:hover {
+background: @teal;
+color: @base;
+border: 1px solid @green;
+}
+#custom-mpris-playpause:hover {
+background: @green;
+color: @base;
+border: 1px solid @teal;
+}
+
+/* Tray icons */
+#tray {
+padding: 2px 8px;
+}
+#tray > .passive {
+opacity: 0.7;
+}
+#tray > .needs-attention {
+background: @yellow;
+color: @base;
+padding: 0 4px;
+border-radius: 10px;
+}
+
+/* Power profiles daemon */
+#power-profiles-daemon {
+color: @text;
+transition: color 0.3s, background 0.3s, border 0.3s;
+}
+#power-profiles-daemon.power-saver { color: @green; }
+#power-profiles-daemon.balanced { color: @blue; }
+#power-profiles-daemon.performance { color: @red; }
+#power-profiles-daemon:hover {
+background: @lavender;
+color: @base;
+border: 1px solid @mauve;
+}
+
+/* Brightness / Backlight */
+#custom-ddcbrightness, #backlight {
+color: @sky;
+transition: background 0.3s, color 0.3s;
+}
+#custom-ddcbrightness:hover, #backlight:hover {
+background: @sky;
+color: @base;
+border: 1px solid @sapphire;
+}
+
+/* Pomodoro */
+#custom-pomo {
+color: @flamingo;
+font-weight: bold;
+}
+#custom-pomo.paused {
+background: alpha(@yellow, 0.2);
+color: @yellow;
+border: 1px solid @yellow;
+}
+#custom-pomo.break {
+background: alpha(@green, 0.2);
+color: @green;
+border: 1px solid @green;
+}
+#custom-pomo:hover {
+background: @flamingo;
+color: @base;
+border: 1px solid @rosewater;
+}
+
+/* Screenshot */
+#custom-screenshot {
+color: @sky;
+}
+#custom-screenshot:hover {
+background: @sky;
+color: @base;
+border: 1px solid @sapphire;
+}
+
+/* Clock */
+#clock {
+color: @lavender;
+font-weight: bold;
+background: linear-gradient(to right, @surface0, @surface1);
+transition: background 0.3s, color 0.3s;
+}
+#clock:hover {
+background: linear-gradient(to right, @lavender, @mauve);
+color: @base;
+border: 1px solid @pink;
+/* box-shadow isn't guaranteed, but GTK CSS supports it sometimes */
+box-shadow: 0 0 5px @lavender;
+}
+
+/* Power button */
+#custom-power {
+color: @red;
+margin-right: 8px;
+font-size: 16px;
+}
+#custom-power:hover {
+background: @red;
+color: @base;
+border: 1px solid @maroon;
+box-shadow: 0 0 5px @red;
+}

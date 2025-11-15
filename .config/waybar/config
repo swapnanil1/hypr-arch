@@ -5,15 +5,13 @@
     "modules-left": [
         "wlr/taskbar",
         "cpu",
-        "custom/cputemp",
-        "custom/gputemp",
         "memory",
         "network",
         "battery"
     ],
     "modules-center": [
         "clock",
-        "sway/workspaces",
+        "hyprland/workspaces",
         "custom/pomo"
     ],
     "modules-right": [
@@ -33,25 +31,23 @@
         "all-outputs": true,
         "warp-on-scroll": false,
         "format": "{icon}",
+        "hide-empty": true,         // <-- move hide-empty here, NOT under format-icons
         "format-icons": {
-            "1": " ",
-            "2": " ",
-            "3": " ",
-            "4": " ",
-            "5": " ",
-            "6": " ",
-            "7": " ",
-            "8": " ",
-            "9": " ",
-            "urgent": " ",
-            "focused": " ",
-            "persistent": " ",
-            "empty": " ",
-            "default": " "
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "urgent": "",
+            "focused": "<b>{name}</b>",
+            "persistent": "{name}",
+            "empty": "{name}",
+            "default": "{name}"
         },
-        "persistent_workspaces": {
-            "*": [1, 2, 3]
-        }
     },
     "tray": {
         "icon-size": 18,

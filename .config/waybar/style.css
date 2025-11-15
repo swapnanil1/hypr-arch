@@ -1,0 +1,374 @@
+@define-color rosewater #1d2021;
+@define-color flamingo  #282828;
+@define-color pink      #32302f;
+@define-color mauve     #3c3836;
+@define-color red       #cc241d;
+@define-color maroon    #fb4934;
+@define-color peach     #d65d0e;
+@define-color yellow    #d79921;
+@define-color green     #98971a;
+@define-color teal      #689d6a;
+@define-color sky       #458588;
+@define-color sapphire  #83a598;
+@define-color blue      #b8bb26;
+@define-color lavender  #d3869b;
+@define-color bright_yellow #fabd2f;
+@define-color bright_red    #fe8019;
+@define-color bright_green  #b8bb26;
+
+@define-color text      #f2e5bc;
+@define-color subtext1  #e0d9b7;
+@define-color subtext0  #d5c4a1;
+@define-color overlay2  #665c54;
+@define-color overlay1  #7c6f64;
+@define-color overlay0  #928374;
+@define-color surface2  #3c3836;
+@define-color surface1  #504945;
+@define-color surface0  #282828;
+@define-color base      #1d2021;
+@define-color mantle    #3c3836;
+@define-color crust     #504945;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Free", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: alpha(@base, 0.95);
+    color: @text;
+    border-bottom: 2px solid @surface0;
+    transition: background 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+label.module, box.module {
+    background: @surface0;
+    color: @subtext1;
+    padding: 2px 12px;
+    margin: 4px 4px;
+    border-radius: 18px;
+    transition: background 0.3s, color 0.3s;
+}
+
+label.module:hover, box.module:hover {
+    background: @surface1;
+    color: @text;
+    border: 1px solid @overlay1;
+}
+
+#cpu, #custom-cputemp, #custom-gputemp {
+background: @surface0;
+color: @subtext1;
+margin: 4px 0;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#cpu {
+color: @bright_red;
+padding: 2px 6px 2px 12px;
+border-radius: 18px 0 0 18px;
+}
+
+#custom-cputemp {
+color: @maroon;
+padding: 2px 6px;
+}
+
+#custom-gputemp {
+color: @red;
+padding: 2px 12px 2px 6px;
+border-radius: 0 18px 18px 0;
+}
+
+#cpu:hover {
+background: @bright_red;
+color: @base;
+border: 1px solid @flamingo;
+}
+
+#custom-cputemp:hover {
+background: @maroon;
+color: @base;
+border: 1px solid @red;
+}
+
+#custom-gputemp:hover {
+background: @red;
+color: @base;
+border: 1px solid @maroon;
+}
+
+#workspaces {
+padding: 0;
+margin: 4px 6px 4px 0;
+}
+
+#workspaces button {
+padding: 2px 8px;
+margin: 0 2px;
+border-radius: 14px;
+opacity: 0.95;
+border: 1px solid @surface1;
+transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+font-size: 14px; /* Default font size */
+}
+
+#workspaces button {
+background: @subtext1;  /* Background */
+color: @base;           /* Text color */
+font-style: normal;
+}
+
+#workspaces button:hover {
+opacity: 1.0;
+color: @text;
+box-shadow: 0 0 8px @bright_yellow; /* Brighten the hover effect */
+}
+
+#workspaces button.active {
+font-style: italic;      /* Italicize active workspace */
+font-weight: bold;       /* Bold active workspace */
+font-size: 16px;         /* Larger font size for active workspace */
+border: 2px solid @bright_yellow; /* Stronger border for active workspace */
+box-shadow: 0 0 10px @bright_yellow; /* Make the shadow more pronounced */
+background: @bright_yellow; /* Bright yellow background for active workspace */
+color: @base; /* Dark text for readability */
+}
+
+
+#workspaces button.urgent {
+background: @red;
+color: @base;
+border: 1px solid @peach;
+opacity: 1.0;
+font-style: normal;
+}
+
+#workspaces button.empty {
+background: @surface0;
+color: @overlay0;
+border-color: @surface0;
+opacity: 0.6;
+}
+
+#wlr-taskbar {
+background: transparent;
+padding: 0;
+margin: 4px 0;
+}
+
+#wlr-taskbar button {
+background: @surface0;
+color: @subtext1;
+padding: 2px 8px;
+margin: 0 3px;
+border-radius: 14px;
+border: 1px solid @surface1;
+transition: background 0.3s, color 0.3s;
+}
+
+#wlr-taskbar button:hover {
+background: @surface1;
+color: @teal;
+border: 1px solid @teal;
+}
+
+#wlr-taskbar button.active {
+background: @green;
+color: @base;
+border: 1px solid @green;
+font-weight: bold;
+}
+
+#memory, #network, #battery {
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#memory {
+color: @bright_yellow;
+}
+
+#memory:hover {
+background: @bright_yellow;
+color: @base;
+border: 1px solid @yellow;
+}
+
+#network {
+color: @sapphire;
+}
+
+#network:hover {
+background: @sapphire;
+color: @base;
+border: 1px solid @blue;
+}
+
+#network.disconnected {
+background: @surface1;
+color: @red;
+border: 1px solid @red;
+}
+
+#battery {
+color: @bright_green;
+}
+
+#battery:hover {
+background: @bright_green;
+color: @base;
+border: 1px solid @teal;
+}
+
+#battery.charging, #battery.plugged {
+color: @teal;
+}
+
+#battery.warning {
+background: alpha(@yellow, 0.3);
+border: 1px solid @yellow;
+}
+
+#battery.critical {
+background: alpha(@red, 0.4);
+color: @bright_red;
+border: 1px solid @bright_red;
+}
+
+#custom-mpris-prev, #custom-mpris-playpause, #custom-mpris-next {
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#custom-mpris-prev, #custom-mpris-next {
+color: @teal;
+}
+
+#custom-mpris-playpause {
+color: @green;
+}
+
+#custom-mpris-prev:hover, #custom-mpris-next:hover {
+background: @teal;
+color: @base;
+border: 1px solid @green;
+}
+
+#custom-mpris-playpause:hover {
+background: @green;
+color: @base;
+border: 1px solid @teal;
+}
+
+#tray {
+padding: 2px 8px;
+}
+
+#tray > .passive {
+opacity: 0.7;
+}
+
+#tray > .needs-attention {
+background: @yellow;
+color: @base;
+padding: 0 4px;
+border-radius: 10px;
+}
+
+#power-profiles-daemon {
+color: @text;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#power-profiles-daemon.power-saver { color: @green; }
+#power-profiles-daemon.balanced { color: @sky; }
+#power-profiles-daemon.performance { color: @red; }
+
+#power-profiles-daemon:hover {
+background: @lavender;
+color: @base;
+border: 1px solid @mauve;
+}
+
+#custom-ddcbrightness, #backlight {
+color: @teal;
+transition: background 0.3s, color 0.3s;
+}
+
+#custom-ddcbrightness:hover, #backlight:hover {
+background: @teal;
+color: @base;
+border: 1px solid @sapphire;
+}
+
+#custom-pomo, #custom-pomo.paused, #custom-pomo.break {
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#custom-pomo {
+color: @text;
+font-weight: bold;
+}
+
+#custom-pomo.paused {
+background: alpha(@yellow, 0.2);
+color: @yellow;
+border: 1px solid @yellow;
+}
+
+#custom-pomo.break {
+background: alpha(@green, 0.2);
+color: @green;
+border: 1px solid @green;
+}
+
+#custom-pomo:hover {
+background: @flamingo;
+color: @base;
+border: 1px solid @rosewater;
+}
+
+#custom-screenshot {
+color: @sky;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#custom-screenshot:hover {
+background: @sky;
+color: @base;
+border: 1px solid @sapphire;
+}
+
+#clock {
+color: @lavender;
+font-weight: bold;
+background: @surface0;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#clock:hover {
+background: @surface1;
+color: @base;
+border: 1px solid @pink;
+box-shadow: 0 0 5px @lavender;
+}
+
+#custom-power {
+color: @red;
+margin-right: 8px;
+font-size: 16px;
+transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#custom-power:hover {
+background: @red;
+color: @base;
+border: 1px solid @maroon;
+box-shadow: 0 0 5px @red;
+}
